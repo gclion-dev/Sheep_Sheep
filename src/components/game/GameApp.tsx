@@ -208,25 +208,30 @@ export function GameApp() {
 
   if (screen === "title" || !game) {
     return (
-      <main className="meadow-shell flex flex-col items-center px-4 pb-10">
-        <div className="flex w-full max-w-md flex-1 flex-col items-center justify-center gap-5">
-          <img
-            src="/game/sheep.png"
-            alt=""
-            className="h-36 w-36 object-contain drop-shadow-md sm:h-44 sm:w-44"
-            style={{ animation: "floaty 2.4s ease-in-out infinite alternate" }}
-          />
-          <div className="text-center">
-            <p className="text-sm font-medium tracking-wide text-accent">三消叠叠乐</p>
-            <h1 className="mt-1 text-5xl leading-tight text-ink sm:text-6xl">羊了个羊</h1>
-            <p className="mt-2 text-sm text-muted">点开没被压住的牌，三个相同即可消除</p>
+      <main className="title-shell flex flex-col">
+        <header className="title-banner relative shrink-0">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-surface/90 via-surface/45 to-transparent" />
+          <div className="absolute inset-0 flex items-center px-5 sm:px-8">
+            <div>
+              <p className="text-xs font-medium tracking-wide text-accent sm:text-sm">三消叠叠乐</p>
+              <h1 className="text-4xl leading-none text-ink sm:text-5xl">羊了个羊</h1>
+            </div>
           </div>
+        </header>
 
-          <div className="flex w-full max-w-xs flex-col gap-3">
+        <div
+          className="title-cover relative min-h-0 flex-1"
+          role="img"
+          aria-label="小羊站在胡萝卜、四叶草、毛线和苹果牌上"
+        />
+
+        <section className="relative z-10 px-4 pt-3">
+          <div className="panel mx-auto flex w-full max-w-md flex-col items-center gap-3 rounded-xl px-5 py-4">
+            <p className="text-center text-sm text-muted">点开没被压住的牌，三个相同即可消除</p>
             <button
               type="button"
               onClick={() => startLevel(Math.min(save.highestLevel, 99) || 1)}
-              className="h-12 rounded-xl bg-accent text-base font-semibold text-accent-fg shadow-sm transition-transform duration-150 active:scale-[0.98]"
+              className="h-12 w-full rounded-xl bg-accent text-base font-semibold text-accent-fg shadow-sm transition-transform duration-150 active:scale-[0.98]"
             >
               开始游戏
             </button>
@@ -234,42 +239,42 @@ export function GameApp() {
               <button
                 type="button"
                 onClick={resumeRun}
-                className="h-12 rounded-xl bg-surface text-base font-medium text-ink shadow-sm ring-1 ring-line transition-transform duration-150 active:scale-[0.98]"
+                className="h-12 w-full rounded-xl bg-surface text-base font-medium text-ink shadow-sm ring-1 ring-line transition-transform duration-150 active:scale-[0.98]"
               >
                 继续第 {save.inProgress.levelId} 关
               </button>
             ) : null}
+            <p className="tabular-nums text-sm text-muted">
+              最高到达第 {save.highestLevel} 关 · 通关 {save.gamesWon} 次
+            </p>
+            <div className="flex w-full items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => setHelpOpen((v) => !v)}
+                className="text-sm font-medium text-accent underline-offset-4 hover:underline"
+              >
+                {helpOpen ? "收起玩法" : "怎么玩"}
+              </button>
+              <button
+                type="button"
+                onClick={toggleSound}
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-surface px-4 text-sm font-medium text-ink ring-1 ring-line"
+                aria-label={save.sound ? "关闭音效" : "开启音效"}
+              >
+                {save.sound ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
+                {save.sound ? "音效开" : "音效关"}
+              </button>
+            </div>
+            {helpOpen ? (
+              <ol className="w-full text-sm text-ink">
+                <li className="py-1">1. 只能点最上面、没有被压住的牌。</li>
+                <li className="py-1">2. 牌会进入下方 7 格槽位，相同的会靠在一起。</li>
+                <li className="py-1">3. 三个相同就会消除。全部消完过关。</li>
+                <li className="py-1">4. 槽位满了失败。撤回、洗牌、移出能解围。</li>
+              </ol>
+            ) : null}
           </div>
-
-          <p className="tabular-nums text-sm text-muted">最高到达第 {save.highestLevel} 关 · 通关 {save.gamesWon} 次</p>
-
-          <button
-            type="button"
-            onClick={() => setHelpOpen((v) => !v)}
-            className="text-sm font-medium text-accent underline-offset-4 hover:underline"
-          >
-            {helpOpen ? "收起玩法" : "怎么玩"}
-          </button>
-          {helpOpen ? (
-            <ol className="panel w-full max-w-sm rounded-xl px-5 py-4 text-sm text-ink">
-              <li className="py-1">1. 只能点最上面、没有被压住的牌。</li>
-              <li className="py-1">2. 牌会进入下方 7 格槽位，相同的会靠在一起。</li>
-              <li className="py-1">3. 三个相同就会消除。全部消完过关。</li>
-              <li className="py-1">4. 槽位满了失败。撤回、洗牌、移出能解围。</li>
-            </ol>
-          ) : null}
-        </div>
-        <div className="mt-6 flex items-center gap-3">
-          <button
-            type="button"
-            onClick={toggleSound}
-            className="inline-flex h-11 items-center gap-2 rounded-full bg-surface px-4 text-sm font-medium text-ink ring-1 ring-line"
-            aria-label={save.sound ? "关闭音效" : "开启音效"}
-          >
-            {save.sound ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
-            {save.sound ? "音效开" : "音效关"}
-          </button>
-        </div>
+        </section>
       </main>
     );
   }

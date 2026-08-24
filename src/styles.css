@@ -84,6 +84,23 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
+  .title-shell {
+    min-height: 100dvh;
+    min-height: 100svh;
+    background-color: var(--color-bg-deep);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .title-banner {
+    min-height: calc(6.75rem + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
+    background: #dce8c8 url("/game/banner.jpg") right center / cover no-repeat;
+  }
+
+  .title-cover {
+    background: #c9d8b4 url("/game/cover.jpg") left center / cover no-repeat;
+  }
+
   .panel {
     background: color-mix(in oklab, var(--color-surface) 92%, white);
     border: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent);
