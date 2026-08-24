@@ -1,0 +1,11 @@
+{
+  "target": "asset",
+  "mode": "single",
+  "prompt": "",
+  "role": "",
+  "input": "/workspace/assets/sprites/mascot/raw.png",
+  "threshold": 55,
+  "edge_threshold": 100,
+  "duration": 200,
+  "single_size": 512
+}

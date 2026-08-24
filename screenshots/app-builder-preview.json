@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "羊了个羊",
+      "hasCanvas": false,
+      "bodyTextLen": 60,
+      "bodyTextHash": "38f1449be5fbf5a89a598218e1a043b327e1faa2d0be1b81cef0b546d3177f8c",
+      "bodyTextPrefix": "三消叠叠乐 羊了个羊 点开没被压住的牌，三个相同即可消除 开始游戏 最高到达第 1 关 · 通关 0 次 怎么玩 音效开",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "羊了个羊",
+      "hasCanvas": false,
+      "bodyTextLen": 60,
+      "bodyTextHash": "38f1449be5fbf5a89a598218e1a043b327e1faa2d0be1b81cef0b546d3177f8c",
+      "bodyTextPrefix": "三消叠叠乐 羊了个羊 点开没被压住的牌，三个相同即可消除 开始游戏 最高到达第 1 关 · 通关 0 次 怎么玩 音效开",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
