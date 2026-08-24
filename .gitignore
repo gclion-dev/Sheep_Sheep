@@ -3,3 +3,7 @@ node_modules/
 .github_repo
 .env
 .env.*
+.output/
+.vercel/
+*.log
+sheep-stack-vps.tar.gz
